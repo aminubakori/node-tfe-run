@@ -300,6 +300,7 @@ try {
 	getWorkSpace(inputTfeToken, inputOrganizationName, inputWorkSpace)
 	.then(async (workSpace) => {
 		if(workSpace && workSpace !== null) {
+			console.log(workSpace);
 			if(inputVariables && inputVariables !== null && inputVariables.length > 0) {
 				console.log("Step - Get and set Variables");
 				inputVariables = Buffer.from(inputVariables);
