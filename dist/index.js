@@ -300,7 +300,6 @@ try {
 	getWorkSpace(inputTfeToken, inputOrganizationName, inputWorkSpace)
 	.then(async (workSpace) => {
 		if(workSpace && workSpace !== null) {
-			console.log(workSpace);
 			if(inputVariables && inputVariables !== null && inputVariables.length > 0) {
 				console.log("Step - Get and set Variables");
 				inputVariables = Buffer.from(inputVariables);
@@ -312,7 +311,6 @@ try {
 			console.log("Step - Creating Run");
 			await addRun(inputTfeToken, workSpace.id, inputMessage, false)
 				.then((result) => {
-					console.log(result);
 					if(result.status == 200 && result.data && result.data.data) {
 						console.log("Step - Run Created Successfully");
 						core.setOutput("run-url", tfeDomain + result.data.data.links.self);
