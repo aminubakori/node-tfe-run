@@ -1,0 +1,21 @@
+on: [push]
+
+jobs:
+  integration-test:
+    name: Integration Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - uses: ./
+        with:
+          token: ${{ secrets.TFE_TOKEN }}
+          organization: ${{ secrets.TFE_ORG }}
+          workspace: ${{ secrets.TFE_WORKSPACE }}
+          message: |
+            Queued by GitHub Actions (commit: ${{ github.sha }})
+          variables: |
+            commit_tag=${{ github.sha }}
+            foo=var
+            

@@ -1,0 +1,43 @@
+name: 'Terraform Cloud Run'
+description: 'Create and customize a run on Terraform Cloud'
+author: Aminu Bakori
+
+branding:
+  icon: fast-forward
+  color: white
+
+inputs:
+  token:
+    description: |
+      Token used to communicating with the Terraform Cloud API. Must be a user or team api token.
+    required: true
+
+  organization:
+    description: |
+      Name of the organization on Terraform Cloud, defaults to the owner of the GitHub repository.
+    required: false
+    default: ${{ github.repository_owner }}
+
+  workspace:
+    description: >
+      Name of the workspace on Terraform Cloud.
+    required: true
+
+  message:
+    description: |
+      Optional message to use as name of the run.
+    required: false
+    default: 'Queued by GitHub Actions (commit: ${{ github.sha }})'
+
+  variables:
+    description: |
+      The list of variables to create on Terraform Cloud.
+    required: false
+
+outputs:
+  run-url:
+    description: URL of the run on Terraform Cloud.
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
