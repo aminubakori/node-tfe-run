@@ -311,6 +311,7 @@ try {
 			console.log("Step - Creating Run");
 			await addRun(inputTfeToken, workSpace.id, inputMessage, false)
 				.then((result) => {
+					console.log(result);
 					if(result.status == 200 && result.data && result.data.data) {
 						console.log("Step - Run Created Successfully");
 						core.setOutput("run-url", tfeDomain + result.data.data.links.self);
