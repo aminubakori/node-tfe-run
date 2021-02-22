@@ -1,4 +1,4 @@
-name: 'Terraform Cloud Run'
+name: 'Terraform Cloud Run with Node.js'
 description: 'Create and customize a run on Terraform Cloud'
 author: Aminu Bakori
 
